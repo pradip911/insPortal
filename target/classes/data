@@ -1,0 +1,11 @@
+insert into ROLE(ROLE_ID,ROLE) values(1,'ADMIN');
+insert into ROLE(ROLE_ID,ROLE) values(2,'USER');
+
+
+
+insert into cdr(id,name) values(1,'BT_CDR');
+insert into cdr(id,name) values(2,'BT_WHOLESALE_CDR');
+
+
+insert into customer(id,address,email,name) values(1,'UK','p@gmail.com','BT');
+commit;
