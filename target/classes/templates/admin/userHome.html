@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>User Dashboard</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <form th:action="@{/logout}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="registration"
+                type="Submit">Logout
+        </button>
+    </form>
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span th:utext="${userName}"></span>
+            </div>
+            <div class="panel-heading">
+                <span th:utext="${pathDetails}"></span>
+            </div>
+            <div class="panel-body">
+                <img th:src="@{/images/flower.jpg}" class="img-responsive center-block" width="400" height="400"
+                     alt="Beer"/>
+            </div>
+            <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+        </div>
+    </div>
+    
+    
+    <!-- <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Admin Portal</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Portal</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="/new" class="card-link">Customer Portal</a>
+    <a href="/cdrinfo" class="card-link">Company Portal</a>
+    <a href="/InsuranceRegistration" class="card-link">Insurance Portal</a>
+  </div>
+</div> -->
+
+
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">My Insurance</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="/insuranceDetails" class="btn btn-primary">Processed</a>
+      </div>
+    </div>
+  </div>
+ 
+
+</div>
+
+<div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Download Portal</h5>
+        <p class="card-text">Download All policy info</p>
+        <a href="/getReport/api/v1" class="btn btn-primary">Download</a>
+      </div>
+    </div>
+  </div>
+</div>
+    
+   <!--  <h3><a href="/new">Customer Portal</a></h3>
+    <h3><a href="/cdrinfo">New Company</a></h3>
+     <h3><a href="/InsuranceRegistration">New Insurance</a></h3> -->
+
+    <!--  <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+        
+        
+       
+        
+        <tr th:each="student: ${listCustomer}">
+    <td th:text="${student.id}" />
+    <td th:text="${student.name}" />
+    <td th:text="${student.email}" />
+    <td th:text="${student.address}" />
+</tr>
+    </table> -->
+
+<!-- </div>-->
+</body>
+</html>

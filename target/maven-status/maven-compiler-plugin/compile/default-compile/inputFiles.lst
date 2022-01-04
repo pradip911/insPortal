@@ -6,13 +6,16 @@ C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2D
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\controller\PolicyController.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\model\User.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\service\ReportGenerationImpl.java
+C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\model\InsDetails.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\service\UserServiceImpl.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\model\Cdr.java
+C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\repository\InsuranceDetailsRepo.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\controller\CdrController.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\controller\ReportGenerateController.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\config\SecurityConfiguration.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\service\CustomerServiceImpl.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\SpringBootDatabaseSecurityApplication.java
+C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\repository\RoleRepoJDBCTemplate.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\service\CdrServiceImpl.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\repository\RoleRepository.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\bt\rest\customexception\ExceptionResponse.java
@@ -25,6 +28,7 @@ C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2D
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\bt\interceptor\CustomInterCeptor.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\model\Customer.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\repository\UserRepository.java
+C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\repository\RoleRepoJDBCTemplateImpl.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\service\ReportGenerationService.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\bt\rest\customexception\CustomerAlreadyExistException.java
 C:\EYproject\RestPOC\springBootAjax2\SpringBootAjaxH2DB-master\SpringBootAjaxH2DB-master\src\main\java\com\myjavablog\service\CdrService.java

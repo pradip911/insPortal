@@ -1,7 +1,6 @@
 package com.myjavablog.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -15,10 +14,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myjavablog.model.Customer;
+import com.myjavablog.model.InsDetails;
 import com.myjavablog.model.User;
+import com.myjavablog.repository.RoleRepoJDBCTemplate;
 import com.myjavablog.service.CustomerService;
 import com.myjavablog.service.UserService;
 
@@ -34,6 +36,12 @@ public class UserController {
     
     @Autowired
     private CustomerService custService;
+    
+    
+    
+    
+    @Autowired
+    private RoleRepoJDBCTemplate roleRepoJdbcTemplate;
 
     @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
@@ -75,16 +83,29 @@ public class UserController {
 
     @RequestMapping(value="/admin/adminHome", method = RequestMethod.GET)
     public ModelAndView home(){
-        ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByEmail(auth.getName());
-        List<Customer> listCustomer=custService.getAllCustomer();
-        System.out.println("customer Size !!!"+listCustomer.size());
-        modelAndView.addObject("listCustomer",listCustomer);
-        modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-        modelAndView.addObject("adminMessage","This Page is available to Users with Admin Role");
-        modelAndView.setViewName("admin/adminHome");
-        return modelAndView;
+    	ModelAndView modelAndView = new ModelAndView();
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    	User user = userService.findUserByEmail(auth.getName());
+    	System.out.println("auth name "+auth.getName());
+    	if(auth.getName().contains("ins")) {
+    		//roleRepoJdbcTemplate
+    		List<Customer> listCustomer=custService.getAllCustomer();
+    		System.out.println("customer Size !!!"+listCustomer.size());
+    		modelAndView.addObject("listCustomer",listCustomer);
+    		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+    		modelAndView.addObject("adminMessage","This Page is available to Users with Admin Role");
+    		modelAndView.setViewName("admin/adminHome");
+    	}
+    	else {
+    		List<Customer> listCustomer=custService.getAllCustomer();
+    		System.out.println("customer Size !!!"+listCustomer.size());
+    		modelAndView.addObject("listCustomer",listCustomer);
+    		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+    		modelAndView.addObject("adminMessage","This Page is available to Users with Admin Role");
+    		modelAndView.setViewName("admin/userHome");
+    	}
+
+    	return modelAndView;
     }
     
    
@@ -92,11 +113,25 @@ public class UserController {
     @RequestMapping("/new")
     public ModelAndView newCustomerForm() {
     	 ModelAndView modelAndView = new ModelAndView();
+    	// System.out.println("username"+userName);
        // Customer customer = new Customer();
        //  model.put("customer", customer);
        // modelAndView.addAllObjects("customer",customer);
         modelAndView.setViewName("admin/newcustomer");
         return modelAndView;
+    }
+    
+    @RequestMapping("/insuranceDetails")
+    public ModelAndView insuranceDetails() {
+    	ModelAndView modelAndView = new ModelAndView();
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    	//auth.getName()
+    	System.out.println("Auth name :"+auth.getName());
+    	
+    	List<InsDetails> insDetails=userService.getInsDetails(auth.getName());
+    	modelAndView.addObject("insDetails",insDetails);
+    	modelAndView.setViewName("user/insuranceDetails");
+    	return modelAndView;
     }
     
     @RequestMapping("/InsuranceRegistration")

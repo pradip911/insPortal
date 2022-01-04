@@ -8,4 +8,9 @@ insert into cdr(id,name) values(2,'BT_WHOLESALE_CDR');
 
 
 insert into customer(id,address,email,name) values(1,'UK','p@gmail.com','BT');
+
+
+insert into insurance_details(ins_id,ins_name,ins_address,ins_email) values(1,'Jivan Bima','Shyamnagar','pradipsahaait1@gmail.com');
+
+
 commit;

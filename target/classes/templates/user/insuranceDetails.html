@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>User Dashboard</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<table class="table table-hover">
+<tr>
+           
+            <th>Name</th>
+            <th>Address</th>
+            <th>E-mail</th>
+            
+            </tr>
+     
+        <tr th:each="ins: ${insDetails}">
+    <td th:text="${ins.emnsName}" />
+    <td th:text="${ins.insAddress}" />
+    <td th:text="${ins.insEmail}" />
+   
+</tr>
+</table>
+ 
+</body>
+</html>
