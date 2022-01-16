@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div th:if="${paymentHistory!=null and !paymentHistory.isEmpty()}">
+<table class="table table-responsive">
+<tr>
+        
+            <!-- <td>ID</td> -->
+            <td>EMAIL_ID</td>
+            <td>Payment_Date</td>
+             <td>Payment_Success</td>
+            <!--   <td>Payment_Success</td> -->
+              <td>Policy Id</td>
+            
+        
+        </tr>
+
+        <tr th:each="paymentHistory : ${paymentHistory}">
+            <!-- <td th:text="${paymentHistory.id}"/> -->
+            <td th:text="${paymentHistory.insEmail}"/>
+            <td th:text="${paymentHistory.paymentDate}"/>
+        <!--     <td th:text="${paymentHistory.paymentSuccess}"/> -->
+            <td th:text="${paymentHistory.policyId}"/>
+           <td >
+              <form th:action="@{delete}" method="post">
+                <!--  <input type="hidden" name="id" th:value="${paymentHistory.id}" />-->
+                  <input type="submit" value="Payment" class="btn btn-danger" />
+              </form>
+            </td>
+        </tr>
+    </table>
+    
+    </div>
+
+
+<div th:if="${paymentHistory.isEmpty()}">
+No pending payment available
+</div>
+</body>
+</html>

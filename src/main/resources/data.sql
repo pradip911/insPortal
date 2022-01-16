@@ -12,5 +12,6 @@ insert into customer(id,address,email,name) values(1,'UK','p@gmail.com','BT');
 
 insert into insurance_details(ins_id,ins_name,ins_address,ins_email) values(1,'Jivan Bima','Shyamnagar','pradipsahaait1@gmail.com');
 
+insert into payment_history (payment_success,payment_id,ins_email,policy_id) values('FALSE',1,'pradipsahaait1@gmail.com',123);
 
 commit;

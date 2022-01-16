@@ -1,5 +1,6 @@
 package com.myjavablog.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,14 +15,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myjavablog.model.Customer;
 import com.myjavablog.model.InsDetails;
+import com.myjavablog.model.PaymentHistory;
 import com.myjavablog.model.User;
+import com.myjavablog.repository.PaymentDashboardRepo;
 import com.myjavablog.repository.RoleRepoJDBCTemplate;
 import com.myjavablog.service.CustomerService;
+import com.myjavablog.service.PaymentDashboardService;
 import com.myjavablog.service.UserService;
 
 @Controller
@@ -39,9 +42,15 @@ public class UserController {
     
     
     
+    @Autowired
+    PaymentDashboardService paymentDashboardService;
     
     @Autowired
     private RoleRepoJDBCTemplate roleRepoJdbcTemplate;
+    
+    
+    @Autowired
+    PaymentDashboardRepo paymentRepo;
 
     @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
@@ -109,6 +118,23 @@ public class UserController {
     }
     
    
+    @RequestMapping("/paymentLink")
+    public ModelAndView paymentLink() {
+    	ModelAndView modelAndView = new ModelAndView();
+    	
+    	List<PaymentHistory> paymentHostory=paymentRepo.findAll();
+    	
+    	for(PaymentHistory payHis:paymentHostory) {
+    		
+    		payHis.setPaymentDate(new Date());
+    		payHis.setPaymentSuccess("Done");
+    		paymentRepo.save(payHis);
+    	}
+    			
+    	modelAndView.setViewName("user/paymentDashboard");
+		return modelAndView;
+    	
+    }
     
     @RequestMapping("/new")
     public ModelAndView newCustomerForm() {
@@ -134,6 +160,22 @@ public class UserController {
     	return modelAndView;
     }
     
+    @RequestMapping("/paymenyPolicy")
+    public ModelAndView paymentDetails() {
+    	ModelAndView modelAndView = new ModelAndView();
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    	
+    	//auth.getName()
+    	//System.out.println("Auth name :"+auth.getName());
+    	List<PaymentHistory> paymentHistory=paymentDashboardService.getPendingPayments(auth.getName());
+    	System.out.println("Payment History size"+paymentHistory.size());
+    	//modelAndView.addObject("username",auth.getName());
+    	//modelAndView.addObject("paymentsize",paymentHistory.size());
+    	modelAndView.addObject("paymentHistory",paymentHistory);
+    	modelAndView.setViewName("user/paymentDashboard");
+    	return modelAndView;
+    }
+    
     @RequestMapping("/InsuranceRegistration")
     public ModelAndView newInsuranceForm() {
     	 ModelAndView modelAndView = new ModelAndView();
@@ -151,6 +193,18 @@ public class UserController {
         modelAndView.setViewName("admin/ajax_crud");
         return modelAndView;
     }
+    
+    @RequestMapping("/delete")
+    public ModelAndView updatePaymentInfo() {
+    	 ModelAndView modelAndView = new ModelAndView();
+       // Customer customer = new Customer();
+       //  model.put("customer", customer);
+       // modelAndView.addObject("paymentId",id);
+        modelAndView.setViewName("user/payment");
+        return modelAndView;
+    }
+    
+    
     
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
