@@ -8,15 +8,21 @@ import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.myjavablog.model.Cdr;
 import com.myjavablog.model.Customer;
 import com.myjavablog.model.InsDetails;
 import com.myjavablog.model.PaymentHistory;
@@ -68,6 +74,17 @@ public class UserController {
         modelAndView.setViewName("registration");
         return modelAndView;
     }
+    
+    
+    @RequestMapping(value="/newPolicyPage", method = RequestMethod.GET)
+    public ModelAndView newPagePolicy(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user/policyCreate");
+        return modelAndView;
+    }
+    
+    
+    
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
@@ -223,5 +240,12 @@ public class UserController {
         modelAndView.setViewName("user/userHome");
         return modelAndView;
     }
+    
+    @RequestMapping(value = "/student/info", method = RequestMethod.PUT)
+    public @ResponseBody String updateStudent(@RequestBody Cdr cdr){
+     //LOG.info(student.toString());
+     return "ok";
+    }
+    
 
 }

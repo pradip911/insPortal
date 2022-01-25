@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.bt.rest.customexception.CustomerAlreadyExistException;
 import com.myjavablog.model.Cdr;
@@ -62,6 +65,7 @@ public class CdrController {
 	}
 	
 	
+	
 
 	@DeleteMapping("/company/delete/{id}")
 	public ResponseEntity<Void> deleteCompany(@PathVariable Long id) {
@@ -84,5 +88,6 @@ public class CdrController {
 	        javaMailSender.send(msg);
 
 	    }
+	 
 
 }
